@@ -1,9 +1,5 @@
 <script>
-	import { onDestroy } from 'svelte';
-	import { gameState } from '../stores'
-
+	import Scoreboard from '../components/Scoreboard.svelte';
 </script>
 
-<h2>Overlay</h2>
-
-<code>{JSON.stringify($gameState)}</code>
+<Scoreboard />
