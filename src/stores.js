@@ -8,6 +8,7 @@ const defaultGameSettings = () => ({
 	blueTeamName: 'Blue team',
 	orangeTeamLogo: '',
 	orangeTeamName: 'Orange team',
+	title: '',
 });
 
 const defaultGameState = () => ({
