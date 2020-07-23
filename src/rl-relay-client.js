@@ -81,26 +81,30 @@ export function subscribe({ channels, events, callback }) {
 	const eventsToSubscribe = Array.isArray(events) ? events : [events];
 
 	channelsToSubscribe.forEach((channel) => {
+		if (!SUBSCRIBERS[channel]) {
+			SUBSCRIBERS[channel] = {};
+		}
+
 		eventsToSubscribe.forEach((event) => {
-			if (!SUBSCRIBERS[channel]) {
-				SUBSCRIBERS[channel] = {};
-			}
+			const hasSubscribers =
+				SUBSCRIBERS[channel][event] && SUBSCRIBERS[channel][event].length;
 
-			if (!SUBSCRIBERS[channel][event]) {
+			if (!hasSubscribers) {
 				SUBSCRIBERS[channel][event] = [];
-				if (hasRelayConnection) {
-					callRelay({
-						channel: CHANNELS.RELAY_SERVER,
-						event: RELAY_SERVER_EVENTS.SUBSCRIBE,
-						data: `${channel}:${event}`,
-					});
-				} else {
-					relayRegisterQueue.push(`${channel}:${event}`);
-				}
 			}
 
-			relayRegisterQueue.push(`${channel}:${event}`);
+			if (!hasRelayConnection) {
+				relayRegisterQueue.push(`${channel}:${event}`);
+				return;
+			}
+
 			SUBSCRIBERS[channel][event].push(callback);
+
+			callRelay({
+				channel: CHANNELS.RELAY_SERVER,
+				event: RELAY_SERVER_EVENTS.SUBSCRIBE,
+				data: `${channel}:${event}`,
+			});
 		});
 	});
 }
