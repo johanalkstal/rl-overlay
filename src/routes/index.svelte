@@ -2,6 +2,7 @@
 	import { gameState } from '../stores';
 	import PlayerCard from '../components/PlayerCard.svelte';
 	import Scoreboard from '../components/Scoreboard.svelte';
+	import TeamCard from '../components/TeamCard.svelte';
 </script>
 
 <style>
@@ -9,6 +10,18 @@
 		bottom: 32px;
 		left: 32px;
 		position: absolute;
+	}
+
+	.blue-team {
+		left: 32px;
+		position: absolute;
+		top: 96px;
+	}
+
+	.orange-team {
+		position: absolute;
+		right: 32px;
+		top: 96px;
 	}
 
 	.orange-team-player {
@@ -37,8 +50,16 @@
 	<Scoreboard/>
 </div>
 
+<div class="blue-team">
+	<TeamCard teamId={0}/>
+</div>
+
 <div class="blue-team-player">
 	<PlayerCard teamId={0}/>
+</div>
+
+<div class="orange-team">
+	<TeamCard teamId={1}/>
 </div>
 
 <div class="orange-team-player">
