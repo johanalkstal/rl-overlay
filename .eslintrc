@@ -1,0 +1,14 @@
+{
+	"extends": [
+		"airbnb-base",
+		"prettier"
+	],
+	"globals": {
+		"document": true,
+		"window": true
+	},
+	"rules": {
+			"import/no-extraneous-dependencies": "off",
+			"no-use-before-define": ["error", { "functions": false, "classes": true }]
+	}
+}
