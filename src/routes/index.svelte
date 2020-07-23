@@ -2,6 +2,7 @@
 	import { gameState } from '../stores';
 	import PlayerCard from '../components/PlayerCard.svelte';
 	import Scoreboard from '../components/Scoreboard.svelte';
+	import StatsFeed from '../components/StatsFeed.svelte';
 	import TeamCard from '../components/TeamCard.svelte';
 </script>
 
@@ -40,6 +41,12 @@
 		margin: 0 auto;
     width: 50%;
 	}
+
+	.stats-feed {
+		position: absolute;
+		right: 32px;
+		top: 16px;
+	}
 </style>
 
 {#if !$gameState.game.hasWinner && $gameState.game.isReplay}
@@ -48,6 +55,10 @@
 
 <div class="scoreboard">
 	<Scoreboard/>
+</div>
+
+<div class="stats-feed">
+	<StatsFeed/>
 </div>
 
 <div class="blue-team">

@@ -19,6 +19,12 @@ const defaultGameState = () => ({
 	players: {},
 });
 
+const defaultStatsFeed = () => ({
+	mainTarget: '',
+	secondaryTarget: '',
+	type: '',
+});
+
 /**
  *  A writable store for game settings controlled by the dashboard.
  */
@@ -38,5 +44,26 @@ export const gameState = readable(defaultGameState(), function start(set) {
 
 	return function stop() {
 		unsubscribe({ channel: CHANNELS.GAME, event: GAME_EVENTS.UPDATE_STATE });
+	};
+});
+
+/**
+ * A read only store of the stat feed that shows things like shots, saves etc.
+ */
+export const statsFeed = readable(defaultStatsFeed(), function start(set) {
+	subscribe({
+		channels: CHANNELS.GAME,
+		events: GAME_EVENTS.STATFEED_EVENT,
+		callback: (data) => {
+			set({
+				mainTarget: data.main_target,
+				secondaryTarget: data.secondary_target,
+				type: data.type,
+			});
+		},
+	});
+
+	return function stop() {
+		unsubscribe({ channel: CHANNELS.GAME, event: GAME_EVENTS.STATFEED_EVENT });
 	};
 });
