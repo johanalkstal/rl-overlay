@@ -22,7 +22,7 @@
 </style>
 
 {#if showCard}
-<div class="player-card">
+<section class="player-card">
 	<ul>
 		<li>{target.name}</li>
 		<li>Score {target.score}</li>
@@ -33,5 +33,5 @@
 		<li>Speed {target.speed}</li>
 		<li>Boost {target.boost}</li>
 	</ul>
-</div>
+</section>
 {/if}
