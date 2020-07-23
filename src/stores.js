@@ -1,8 +1,32 @@
-import { readable } from 'svelte/store';
+import { readable, writable } from 'svelte/store';
 import { subscribe, unsubscribe } from './rl-relay-client';
 import { CHANNELS, GAME_EVENTS } from './constants';
 
-export const gameState = readable(null, function start(set) {
+const defaultGameSettings = () => ({
+	bestOfMatches: 1,
+	blueTeamLogo: '',
+	blueTeamName: 'Blue team',
+	orangeTeamLogo: '',
+	orangeTeamName: 'Orange team',
+});
+
+const defaultGameState = () => ({
+	game: {
+		teams: [{ score: 0 }, { score: 0 }],
+	},
+	hasGame: false,
+	players: {},
+});
+
+/**
+ *  A writable store for game settings controlled by the dashboard.
+ */
+export const gameSettings = writable(defaultGameSettings());
+
+/**
+ * A read only store that subscribes to game updates.
+ */
+export const gameState = readable(defaultGameState(), function start(set) {
 	subscribe({
 		channels: CHANNELS.GAME,
 		events: GAME_EVENTS.UPDATE_STATE,
