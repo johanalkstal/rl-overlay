@@ -31,6 +31,7 @@
 	}
 </style>
 
+{#if team.length}
 <section class="team-card">
 	<ul>
 		{#each team as player}
@@ -38,3 +39,4 @@
 		{/each}
 	</ul>
 </section>
+{/if}
