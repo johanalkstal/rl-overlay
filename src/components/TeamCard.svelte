@@ -23,6 +23,7 @@
 
 <style>
 	.team-card {
+		background-color: white;
 		border: 1px solid black;
 		border-radius: 4px;
 		height: 100px;
