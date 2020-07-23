@@ -28,8 +28,6 @@
 		border: 1px solid black;
     border-radius: 0 0 4px 7px;
 		display: flex;
-    margin: 0 auto;
-    width: 50%;
 	}
 
 	.blue-team,
