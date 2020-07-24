@@ -35,9 +35,10 @@ export function connect() {
  */
 function broadcastMessage({ senderConnectionId, message }) {
 	const { data: messageData, event: messageEvent } = JSON.parse(message);
-	if (senderConnectionId !== ROCKET_LEAGUE_ID) {
-		log.wb(`${senderConnectionId} sent ${messageEvent} event.`);
-	}
+	// UNCOMMENT TO LOG MESSAGES.
+	// if (messageEvent !== 'game:update_state') {
+	// 	log.wb(`${senderConnectionId} sent ${messageEvent} event.`);
+	// }
 
 	const [channel, event] = messageEvent.split(':');
 
