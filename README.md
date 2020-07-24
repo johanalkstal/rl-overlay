@@ -26,3 +26,27 @@ Open your web browser and visit `localhost:3000` to see the overlay.
 *Remember that you need to have Rocket League running and a game started.*
 
 `localhost:3000` is also where you point your OBS software to in order to display the overlay on your stream.
+
+# For developers
+
+### [Read about Sapper](https://sapper.svelte.dev/)
+
+### [Read about Svelte](https://svelte.dev/)
+
+## Explanation of Rocket League events
+
+`channel:event`
+
+	game:match_created			A match has been created but not started.
+	game:initialized			The match is about to begin.
+	game:pre_countdown_begin	The kickoff countdown is about to begin.
+	game:post_countdown_begin	The kickoff countdown has begun.
+	game:statfeed_event			Statfeed data is sent.
+	game:goal_scored			A goal has been scored.
+	game:replay_start			A replay is starting.
+	game:replay_will_end		A replay is about to end.
+	game:replay_end				A replay has ended.
+	game:match_ended			The match has ended.
+	game:podium_start			The winners are displayed.
+
+[Check the Bakkesmod SOS plugin README for an explanation of the data sent](https://gitlab.com/bakkesplugins/sos/sos-plugin/-/tree/master#websocket-server)
