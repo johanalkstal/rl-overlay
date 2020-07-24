@@ -1,22 +1,21 @@
 <script>
-	import { gameState } from '../stores';
-
+	export let players = {};
 	export let teamId = 0;
 
 	let team = [];
 
 	$: {
-		team = Object.keys($gameState.players)
+		team = Object.keys(players)
 			.filter(playerFilter)
 			.map(getPlayer);
 	}
 
 	function getPlayer(playerId) {
-		return $gameState.players[playerId];
+		return players[playerId];
 	}
 
 	function playerFilter(playerId) {
-		return $gameState.players[playerId].team === teamId;
+		return players[playerId].team === teamId;
 	}
 
 </script>

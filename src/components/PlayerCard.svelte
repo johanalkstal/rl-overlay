@@ -1,15 +1,6 @@
 <script>
-	import { gameState } from '../stores'
-
 	export let teamId = 0;
-
-	let target = null;
-	let showCard = false;
-
-	$: {
-		showCard = !$gameState.game.isReplay && $gameState.game.hasTarget && $gameState.players[$gameState.game.target].team === teamId;
-		target = showCard ? $gameState.players[$gameState.game.target] : null;
-	}
+	export let player;
 </script>
 
 <style>
@@ -22,17 +13,15 @@
 	}
 </style>
 
-{#if showCard}
 <section class="player-card">
 	<ul>
-		<li>{target.name}</li>
-		<li>Score {target.score}</li>
-		<li>Goals {target.goals}</li>
-		<li>Assists {target.assists}</li>
-		<li>Shots {target.shots}</li>
-		<li>Saves {target.saves}</li>
-		<li>Speed {target.speed}</li>
-		<li>Boost {target.boost}</li>
+		<li>{player.name}</li>
+		<li>Score {player.score}</li>
+		<li>Goals {player.goals}</li>
+		<li>Assists {player.assists}</li>
+		<li>Shots {player.shots}</li>
+		<li>Saves {player.saves}</li>
+		<li>Speed {player.speed}</li>
+		<li>Boost {player.boost}</li>
 	</ul>
 </section>
-{/if}
