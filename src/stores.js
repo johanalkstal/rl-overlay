@@ -1,6 +1,6 @@
 import { get, readable, writable } from 'svelte/store';
 import { subscribe, unsubscribe } from './rl-relay-client';
-import { CHANNELS, GAME_EVENTS } from './constants';
+import { CHANNELS, GAME_EVENTS, LOCAL_STORAGE_KEY } from './constants';
 
 const defaultGameSettings = () => ({
 	bestOfMatches: 1,
@@ -30,7 +30,7 @@ const defaultStatsFeed = () => ({
  *  A writable store for game settings controlled by the dashboard.
  */
 export const gameSettings = localStorageStore(
-	'rlOverlay',
+	LOCAL_STORAGE_KEY,
 	defaultGameSettings(),
 );
 
