@@ -43,6 +43,20 @@ Open your web browser and visit `localhost:3000` to see the overlay.
 
 ### [Read about Svelte](https://svelte.dev/)
 
+## How to create your own overlay and keep it up to date with this one
+
+To create your own overlay, use this repository as a template. Then you can add this one as another remote to your own repository.
+
+	git remote add rl-overlay https://github.com/johanalkstal/rl-overlay
+
+Create a `rl-overlay` branch in your repository that you will use to keep up to date with this one.
+Whenever there are new updates, pull them down to your `rl-overlay` branch.
+
+	git checkout rl-overlay
+	git pull rl-overlay master
+
+After that you're free to merge the `rl-overlay` branch with one of your own branches.
+
 ## Explanation of Rocket League events
 
 `channel:event`
