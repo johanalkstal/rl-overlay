@@ -11,8 +11,8 @@ The folder is located at `C:\Program Files (x86)\Steam\steamapps\common\rocketle
 
 Then you need to add an environment variable pointing to the `bakkesmodsdk` folder. You do this by
 - opening your Start menu and typing "environment variables", you should get a suggestion to edit your systems environment variables. Click it.
-- Click the environment variables button
-- Click the New button
+- Click the "Environment variables..." button
+- Click the "New..." button
 - Write `BAKKESMODSDK` as the variable name
 - Write the path to the SDK folder, `C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bakkesmod\bakkesmodsdk` or the path to your installation location
 - Save the new environment variable
