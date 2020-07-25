@@ -4,12 +4,22 @@
 
 - The [Bakkesmod SOS Plugin](https://gitlab.com/bakkesplugins/sos/sos-plugin/-/releases) added to Bakkesmod.
 
-You install the plugin by downloading the latest release and extracting the ZIP file into your Bakkesmod plugins folder.
-The folder is located at `C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bakkesmod\plugins`
+## Setting up the SOS plugin
 
-Then you need to follow the instructions located at
-- https://gitlab.com/bakkesplugins/sos/sos-plugin#bakkesmod-sdk-setup
-- https://gitlab.com/bakkesplugins/sos/sos-plugin#bakkesmod-settings-file
+You install the plugin by downloading the latest release and extracting the ZIP file into your Bakkesmod plugins folder.
+The folder is located at `C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bakkesmod\plugins` unless you installed Steam on another drive.
+
+Then you need to add an environment variable pointing to the `bakkesmodsdk` folder. You do this by
+- opening your Start menu and typing "environment variables", you should get a suggestion to edit your systems environment variables. Click it.
+- Click the environment variables button
+- Click the New button
+- Write `BAKKESMODSDK` as the variable name
+- Write the path to the SDK folder, `C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bakkesmod\bakkesmodsdk` or the path to your installation location
+- Save the new environment variable
+
+Next you'll need to copy the `sos.set` file from the [SOS Plugin](https://gitlab.com/bakkesplugins/sos/sos-plugin) repository and put it in the `C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\bakkesmod\plugins\settings` folder.
+
+Now the plugin should be installed and ready to go. If you start Rocket League with Bakkesmod, you should see it among the active plugins.
 
 # Running the overlay
 
