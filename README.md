@@ -45,7 +45,7 @@ Open your web browser and visit `localhost:3000` to see the overlay.
 
 ## How to create your own overlay and keep it up to date with this one
 
-To create your own overlay, use this repository as a template. Then you can add this one as another remote to your own repository.
+To create your own overlay, fork this repository. Then you can add this one as another remote to your own repository.
 
 	git remote add rl-overlay https://github.com/johanalkstal/rl-overlay
 
