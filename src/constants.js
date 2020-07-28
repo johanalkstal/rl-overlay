@@ -25,11 +25,6 @@ export const GAME_EVENTS = {
 };
 
 /**
- * The key used to store game settings in local storage.
- */
-export const LOCAL_STORAGE_KEY = 'RLOverlay';
-
-/**
  * Subscribable events from the RELAY_SERVER channel.
  */
 export const RELAY_SERVER_EVENTS = {

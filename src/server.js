@@ -1,3 +1,4 @@
+import bodyParser from 'body-parser';
 import { error, info } from 'cli-msg';
 import sirv from 'sirv';
 import polka from 'polka';
@@ -10,6 +11,7 @@ const dev = NODE_ENV === 'development';
 
 polka()
 	.use(
+		bodyParser.json(),
 		compression({ threshold: 0 }),
 		sirv('static', { dev }),
 		sapper.middleware(),

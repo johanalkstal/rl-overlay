@@ -1,6 +1,6 @@
 import { get, readable, writable } from 'svelte/store';
 import { subscribe, unsubscribe } from './rl-relay-client';
-import { CHANNELS, GAME_EVENTS, LOCAL_STORAGE_KEY } from './constants';
+import { CHANNELS, GAME_EVENTS } from './constants';
 
 const defaultGameSettings = () => ({
 	bestOfMatches: 1,
@@ -29,10 +29,7 @@ const defaultStatsFeed = () => ({
 /**
  *  A writable store for game settings controlled by the dashboard.
  */
-export const gameSettings = localStorageStore(
-	LOCAL_STORAGE_KEY,
-	defaultGameSettings(),
-);
+export const gameSettings = gameSettingsStore(defaultGameSettings());
 
 /**
  * A read only store that subscribes to game updates.
@@ -72,25 +69,33 @@ export const statsFeed = readable(defaultStatsFeed(), function start(set) {
 	};
 });
 
-function localStorageStore(key, initialValue) {
+function gameSettingsStore(initialValue) {
 	const store = writable(initialValue);
 	const { subscribe: storeSubscribe, set } = store;
 	const hasWindow = typeof window !== 'undefined';
 
 	if (hasWindow) {
-		const data = window ? window.localStorage.getItem(key) : undefined;
-
-		if (data) {
-			set(JSON.parse(data));
-		}
+		window
+			.fetch('/game-settings')
+			.then((response) => response.json())
+			.then((data) => {
+				set(data);
+			});
 	}
 
 	return {
 		set(value) {
 			if (hasWindow) {
-				window.localStorage.setItem(key, JSON.stringify(value));
+				window
+					.fetch('/game-settings', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify(value),
+					})
+					.then(() => set(value));
 			}
-			set(value);
 		},
 		update(updateFunc) {
 			const value = updateFunc(get(store));
